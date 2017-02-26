@@ -1,4 +1,4 @@
-# DerelictJWT
+# DerelictJWT ![Build Status](https://ajann.xyz/teamcity/app/rest/builds/buildType:DerelictJWT_LinuxBuildX64/statusIcon?guest=1) [![DUB](https://img.shields.io/dub/l/derelict_extras-jwt.svg?style=flat-square)]() [![DUB](https://img.shields.io/dub/v/derelict_extras-jwt.svg?style=flat-square)]() [![DUB](https://img.shields.io/dub/dm/derelict_extras-jwt/latest.svg?style=flat-square)]()
 **UNOFFICAL** Derelict binding to the libjwt library (https://github.com/benmcollins/libjwt)
 
 This library is provided under the MIT license, but you still must comply with the terms of the LGPL-2.1 License which
