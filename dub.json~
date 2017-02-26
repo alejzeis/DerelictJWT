@@ -1,0 +1,9 @@
+{
+	"name": "derelict_extras-jwt",
+	"authors": [
+		"jython234"
+	],
+	"description": "Unoffical Derelict binding to the libjwt C library.",
+	"copyright": "Copyright (C) 2017, jython234",
+	"license": "MIT"
+}

@@ -1,0 +1,52 @@
+import std.stdio;
+import std.string;
+
+import derelict.jwt.jwt;
+
+immutable string TOKEN_FINAL = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJsYW5ndWFnZSI6IkQifQ.jKJg5fCpngl3qNeN63ueDbQW-iIn2RVLqDI2yIR1pcMWRJzRQLgv15eElH_C5rsKaHXYu6HO_AczTeSqHZJ7Y8S0YnXZ0cgqaJCXN_grEY9v7C63oNZAKdeAONWeACxz";
+
+void main() {
+	DerelictJWT.load();
+
+	writeln("Testing...");
+
+	jwt_t* jwtPtr;
+	jwt_new(&jwtPtr);
+
+	const char *token = toStringz(TOKEN_FINAL);
+	string strKey = readPubKey();
+	const char *key = toStringz(strKey);
+	int len = 96;
+	
+	writeln(jwt_decode(&jwtPtr, token, key, cast(int) strKey.length));
+
+	writeln("Attempting create token:");
+
+	jwt_t* jwtPtr2;
+	jwt_new(&jwtPtr2);
+
+	string privateKeyStr = readPrivateKey();
+	const char *privateKey = toStringz(privateKeyStr);
+
+	jwt_set_alg(jwtPtr2, JWT_ALG_ES384, privateKey, cast(int) privateKeyStr.length);
+
+	const char *json = toStringz("{\"language\":\"D\"}");
+	jwt_add_grants_json(jwtPtr2, json);
+	//jwt_add_grant(jwtPtr2, toStringz("language"), toStringz("D"));
+
+	const char *encoded = jwt_encode_str(jwtPtr2);
+	writeln(fromStringz(encoded));
+
+	jwt_free(jwtPtr);
+	jwt_free(jwtPtr2);
+}
+
+string readPubKey() {
+	import std.file;
+	return readText("server-pub.pem");
+}
+
+string readPrivateKey() {
+	import std.file;
+	return readText("server.pem");
+}

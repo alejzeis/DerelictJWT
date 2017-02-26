@@ -1,0 +1,15 @@
+{
+	"name": "derelict_extras-jwt",
+	"authors": [
+		"jython234"
+	],
+	"description": "Unoffical Derelict binding to the libjwt C library.",
+	"copyright": "Copyright (C) 2017, jython234",
+    "license": "MIT",
+	"targetPath": "bin",
+    "targetName": "DerelictJWT",
+	"targetType": "library",
+    "dependencies": {
+		"derelict-util": "~>3.0.0-alpha.2"
+    }
+}
